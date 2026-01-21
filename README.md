@@ -1,11 +1,11 @@
-# 🎨 Collaborative Canvas
+#  Collaborative Canvas
 
 A real-time multi-user drawing application where multiple people can draw simultaneously on the same canvas with WebSocket synchronization.
 
 ![Collaborative Canvas](https://img.shields.io/badge/status-active-success.svg)
 ![Node Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)
 
-## ✨ Features
+##  Features
 
 ### Core Functionality
 - **Real-time Drawing Synchronization** - See other users' drawings as they draw (not after they finish)
@@ -24,7 +24,7 @@ A real-time multi-user drawing application where multiple people can draw simult
 - Smooth drawing with path optimization
 - Responsive design for different screen sizes
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js >= 14.0.0
@@ -42,7 +42,7 @@ npm start
 
 The application will be available at **http://localhost:3000**
 
-## 🧪 Testing with Multiple Users
+##  Testing with Multiple Users
 
 ### Method 1: Multiple Browser Tabs
 1. Open http://localhost:3000 in your browser
@@ -62,7 +62,7 @@ The application will be available at **http://localhost:3000**
 2. Open http://YOUR_IP:3000 on other devices on the same network
 3. Draw from different devices
 
-## 🎮 Usage Guide
+##  Usage Guide
 
 ### Drawing Tools
 - **Brush Tool** - Click the brush button or it's selected by default
@@ -81,7 +81,7 @@ The application will be available at **http://localhost:3000**
 - **Active Users Panel** - Lists all connected users with their assigned colors
 - **Cursor Indicators** - See other users' cursor positions when they move
 
-## 🏗️ Project Structure
+##  Project Structure
 
 ```
 collaborative-canvas/
@@ -100,14 +100,14 @@ collaborative-canvas/
 └── ARCHITECTURE.md        # Technical architecture documentation
 ```
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Frontend**: Vanilla HTML, CSS, JavaScript
 - **Backend**: Node.js, Express
 - **Real-time**: Socket.io (WebSocket library)
 - **Canvas**: Raw HTML5 Canvas API
 
-## 🐛 Known Limitations
+##  Known Limitations
 
 1. **Canvas State Persistence** - Canvas state is not saved to a database. When the server restarts, all drawings are lost.
 2. **Single Room** - Currently supports only one global room (multi-room support is architecturally ready but not exposed in UI)
@@ -116,14 +116,14 @@ collaborative-canvas/
 5. **Network Latency** - Drawing synchronization quality depends on network latency
 6. **Browser Compatibility** - Tested on modern browsers (Chrome, Firefox, Safari). May not work on older browsers.
 
-## ⚡ Performance Considerations
+##  Performance Considerations
 
 - **Event Throttling** - Cursor movement events are throttled to 50ms intervals
 - **Efficient Redrawing** - Undo/redo redraws entire canvas from operation history
 - **Canvas Optimization** - Uses `lineCap: 'round'` and `lineJoin: 'round'` for smooth lines
 - **Memory Management** - Operation history grows unbounded (consider limits for production)
 
-## 📊 Time Spent
+##  Time Spent
 
 **Total Development Time**: ~4-5 hours
 
@@ -134,7 +134,7 @@ Breakdown:
 - UI/UX & Styling: 1 hour
 - Testing & Debugging: 0.5 hours
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 - [ ] Canvas persistence (save to database/file)
 - [ ] Multiple room support with UI
@@ -148,14 +148,8 @@ Breakdown:
 - [ ] Collaborative permissions (view-only mode)
 - [ ] Mobile app version
 
-## 📝 License
 
-MIT License - feel free to use this project for learning or building upon it.
-
-## 🤝 Contributing
-
-This is a technical assessment project, but suggestions and feedback are welcome!
 
 ---
 
-**Built with ❤️ for collaborative creativity**
+
