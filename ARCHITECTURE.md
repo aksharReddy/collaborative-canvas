@@ -1,8 +1,8 @@
-# 🏗️ Architecture Documentation
+#  Architecture Documentation
 
 This document explains the technical architecture, design decisions, and implementation details of the Collaborative Canvas application.
 
-## 📐 System Overview
+##  System Overview
 
 The Collaborative Canvas is a **client-server application** using WebSocket technology for real-time bidirectional communication. The architecture follows a centralized state management approach where the server maintains the authoritative state and broadcasts changes to all connected clients.
 
@@ -28,7 +28,7 @@ The Collaborative Canvas is a **client-server application** using WebSocket tech
 └─────────────────┘                            └─────────────────┘
 ```
 
-## 🔄 Data Flow Diagram
+## Data Flow Diagram
 
 ### Drawing Event Flow
 
@@ -118,7 +118,7 @@ User clicks undo
 └─────────────────────────────────────────────┘
 ```
 
-## 🔌 WebSocket Protocol
+##  WebSocket Protocol
 
 ### Message Types
 
@@ -196,7 +196,7 @@ User clicks undo
 }
 ```
 
-## 🔄 Global Undo/Redo Strategy
+##  Global Undo/Redo Strategy
 
 ### Challenge
 Traditional undo/redo is per-user, but we need **global undo/redo** where any user can undo any operation by any user.
@@ -230,21 +230,21 @@ Traditional undo/redo is per-user, but we need **global undo/redo** where any us
 5. All clients redraw
 
 **Advantages:**
-- ✅ Perfect consistency - all clients see exact same canvas
-- ✅ Simple to implement
-- ✅ No complex conflict resolution needed
-- ✅ Easy to debug - single source of truth
+- Perfect consistency - all clients see exact same canvas
+- Simple to implement
+- No complex conflict resolution needed
+- Easy to debug - single source of truth
 
 **Disadvantages:**
-- ❌ Performance degrades with many operations (full redraw on each undo/redo)
-- ❌ Memory grows unbounded (could optimize with snapshots)
+- Performance degrades with many operations (full redraw on each undo/redo)
+- Memory grows unbounded (could optimize with snapshots)
 
 **Optimization Opportunities:**
 - Canvas snapshots every N operations
 - Operation batching/merging
 - Differential updates instead of full redraw
 
-## ⚔️ Conflict Resolution
+##  Conflict Resolution
 
 ### Types of Conflicts
 
@@ -294,7 +294,7 @@ operation = {
 2. Operations are totally ordered (by ID)
 3. Same operation list → same canvas rendering
 
-## 🚀 Performance Optimizations
+## Performance Optimizations
 
 ### 1. Event Throttling
 
@@ -348,7 +348,7 @@ operations.forEach(op => {
 - Not implemented due to complexity
 - Full redraw is fast enough for moderate operation counts (<10,000)
 
-## 🎯 State Synchronization
+## State Synchronization
 
 ### New User Joining
 
@@ -394,18 +394,18 @@ operations.forEach(op => {
 
 **Note**: Operations persist after user disconnects. This is intentional - drawings remain even after artist leaves.
 
-## 🏛️ Architecture Decisions
+## Architecture Decisions
 
 ### Why Socket.io over Native WebSockets?
 
 **Chosen**: Socket.io
 
 **Reasons**:
-- ✅ Auto-reconnection with exponential backoff
-- ✅ Room support built-in
-- ✅ Fallback to long-polling for restrictive networks
-- ✅ Event-based API simpler than raw WebSocket messages
-- ✅ Binary data support if needed later
+-  Auto-reconnection with exponential backoff
+-  Room support built-in
+-  Fallback to long-polling for restrictive networks
+-  Event-based API simpler than raw WebSocket messages
+-  Binary data support if needed later
 
 **Trade-off**: Slightly larger bundle size (~200KB vs ~30KB)
 
@@ -416,10 +416,10 @@ operations.forEach(op => {
 **Chosen**: Centralized server
 
 **Reasons**:
-- ✅ Simpler implementation
-- ✅ Single source of truth = easier debugging
-- ✅ Total ordering of operations guaranteed
-- ✅ Easy to add features (permissions, history, replay)
+- Simpler implementation
+- Single source of truth = easier debugging
+- Total ordering of operations guaranteed
+- Easy to add features (permissions, history, replay)
 
 **Trade-off**: Server is bottleneck/single point of failure
 
@@ -430,14 +430,14 @@ operations.forEach(op => {
 **Chosen**: Operation-based with full redraw
 
 **Reasons**:
-- ✅ Perfect accuracy - pixel-perfect consistency
-- ✅ Undo/redo trivial to implement
-- ✅ Can replay entire drawing session
-- ✅ Easy debugging - can log operation sequence
+- Perfect accuracy - pixel-perfect consistency
+- Undo/redo trivial to implement
+- Can replay entire drawing session
+- Easy debugging - can log operation sequence
 
 **Trade-off**: Performance degrades with large operation count
 
-## 📊 Scalability Considerations
+##  Scalability Considerations
 
 ### Current Limitations
 
@@ -497,7 +497,7 @@ const rateLimit = require('express-rate-limit');
 - Only sync visible tiles
 - Reduces bandwidth and memory
 
-## 🔍 Testing Strategy
+## Testing Strategy
 
 ### Unit Testing (Future Enhancement)
 - DrawingState operations
@@ -514,7 +514,7 @@ const rateLimit = require('express-rate-limit');
 - Monitor FPS and memory usage
 - Test with 10+ concurrent users
 
-## 📚 Code Organization Principles
+## Code Organization Principles
 
 **Separation of Concerns:**
 - `canvas.js` - Pure canvas rendering logic
@@ -533,4 +533,4 @@ const rateLimit = require('express-rate-limit');
 
 ---
 
-**This architecture prioritizes simplicity and correctness over premature optimization, making it easy to understand, debug, and extend.**
+
