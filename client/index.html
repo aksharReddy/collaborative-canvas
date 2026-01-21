@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborative Canvas - Real-time Drawing</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="title">
+          Collaborative Canvas
+        </h1>
+        <div class="connection-status">
+          <span class="status-dot" id="statusDot"></span>
+          <span class="status-text" id="statusText">Connecting...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      
+      <!-- Tools Panel -->
+      <aside class="tools-panel">
+        <div class="panel-section">
+          <h3 class="section-title">Drawing Tools</h3>
+          
+          <!-- Tool Selection -->
+          <div class="tool-group">
+            <button class="tool-btn active" id="brushTool" data-tool="brush" title="Brush">
+              Brush
+            </button>
+            <button class="tool-btn" id="eraserTool" data-tool="eraser" title="Eraser">
+              Eraser
+            </button>
+          </div>
+
+          <!-- Color Picker -->
+          <div class="control-group">
+            <label for="colorPicker" class="control-label">Color</label>
+            <div class="color-picker-wrapper">
+              <input type="color" id="colorPicker" value="#FF6B6B" class="color-input">
+              <span class="color-display" id="colorDisplay"></span>
+            </div>
+          </div>
+
+          <!-- Stroke Width -->
+          <div class="control-group">
+            <label for="strokeWidth" class="control-label">
+              Brush Size: <span id="strokeValue">5</span>px
+            </label>
+            <input type="range" id="strokeWidth" min="1" max="50" value="5" class="slider">
+          </div>
+        </div>
+
+        <!-- Canvas Controls -->
+        <div class="panel-section">
+          <h3 class="section-title">Canvas Controls</h3>
+          <div class="button-group">
+            <button class="control-btn" id="undoBtn" title="Undo (Ctrl+Z)">
+              Undo
+            </button>
+            <button class="control-btn" id="redoBtn" title="Redo (Ctrl+Y)">
+              Redo
+            </button>
+            <button class="control-btn danger" id="clearBtn" title="Clear Canvas">
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="panel-section stats-section">
+          <div class="stat-item">
+            <span class="stat-label">Users Online:</span>
+            <span class="stat-value" id="userCount">0</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Canvas Area -->
+      <div class="canvas-container">
+        <canvas id="drawingCanvas"></canvas>
+        <div id="cursors" class="cursors-layer"></div>
+      </div>
+
+      <!-- Users Panel -->
+      <aside class="users-panel">
+        <h3 class="section-title">Active Users</h3>
+        <div id="usersList" class="users-list">
+          <!-- Users will be added dynamically -->
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="canvas.js"></script>
+  <script src="websocket.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
